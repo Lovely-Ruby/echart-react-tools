@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      echarts:
+        specifier: ^6.0.0
+        version: 6.0.0
       echarts-react-tools:
         specifier: workspace:*
         version: link:packages/echarts-react-tools
@@ -60,12 +63,13 @@ importers:
 
   packages/echarts-react-tools:
     dependencies:
-      echarts:
-        specifier: ^6.0.0
-        version: 6.0.0
       tsdown:
         specifier: ^0.18.0
         version: 0.18.0(synckit@0.11.11)(typescript@5.9.3)
+    devDependencies:
+      echarts:
+        specifier: ^6.0.0
+        version: 6.0.0
 
 packages:
 
