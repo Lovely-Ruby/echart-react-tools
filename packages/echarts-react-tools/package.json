@@ -23,13 +23,12 @@
     }
   },
   "peerDependencies": {
-    "echarts": "^6.0.0"
-  },
-  "dependencies": {
-    "lodash.merge": "^4.6.2",
-    "tsdown": "^0.18.0"
+    "echarts": "^6.0.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
   },
   "devDependencies": {
-    "echarts": "^6.0.0"
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
   }
 }

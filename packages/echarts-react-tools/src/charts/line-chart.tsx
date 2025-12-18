@@ -1,5 +1,6 @@
 import type { ECharts, EChartsOption } from 'echarts'
 import type { LineData } from '../core/types'
+import React from 'react'
 import { useBaseChart } from '../core/use-base-chart'
 // charts/LineChart.tsx
 import { useLineOption } from './use-line-option'
