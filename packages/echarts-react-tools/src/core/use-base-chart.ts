@@ -1,7 +1,7 @@
 import type { ECharts, EChartsOption } from 'echarts'
-// core/useBaseChart.ts
 import * as echarts from 'echarts'
 import { useEffect, useRef } from 'react'
+import { useResizeObserver } from './use-resize-observer'
 
 interface UseBaseChartProps {
     option: EChartsOption
@@ -15,10 +15,11 @@ export function useBaseChart({
     onReady,
 }: UseBaseChartProps) {
     const ref = useRef<HTMLDivElement>(null)
-    const chartRef = useRef<ECharts>(undefined)
+    const chartRef = useRef<ECharts | null>(null)
 
+    // init
     useEffect(() => {
-        if (!ref.current)
+        if (!ref.current || chartRef.current)
             return
 
         const chart = echarts.init(ref.current)
@@ -27,15 +28,16 @@ export function useBaseChart({
 
         return () => {
             chart.dispose()
+            chartRef.current = null
         }
     }, [])
 
+    // set option
     useEffect(() => {
-        if (!chartRef.current)
-            return
-        chartRef.current.setOption(option, true)
+        chartRef.current?.setOption(option, true)
     }, [option])
 
+    // loading
     useEffect(() => {
         if (!chartRef.current)
             return
@@ -43,6 +45,11 @@ export function useBaseChart({
             ? chartRef.current.showLoading()
             : chartRef.current.hideLoading()
     }, [loading])
+
+    // resize ✅
+    useResizeObserver(ref, () => {
+        chartRef.current?.resize()
+    })
 
     return ref
 }
