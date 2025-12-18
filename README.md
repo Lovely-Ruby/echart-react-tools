@@ -1,3 +1,8 @@
+# install
+
+> echarts-react-tools requires echarts@^5.x as a peer dependency.\
+> Please install echarts in your application.
+
 # @antfu/eslint-config
 
 ```bash
