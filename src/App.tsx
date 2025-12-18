@@ -1,9 +1,4 @@
 import { LineChart } from 'echarts-react-tools'
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-
-import './App.css'
-import viteLogo from '/vite.svg'
 
 function App() {
   return (
@@ -16,6 +11,7 @@ function App() {
             data: [120, 200, 150, 80, 70, 110, 130],
           },
         ]}
+
       />
     </div>
   )

@@ -15,7 +15,7 @@ export function useBaseChart({
     onReady,
 }: UseBaseChartProps) {
     const ref = useRef<HTMLDivElement>(null)
-    const chartRef = useRef<ECharts>()
+    const chartRef = useRef<ECharts>(undefined)
 
     useEffect(() => {
         if (!ref.current)

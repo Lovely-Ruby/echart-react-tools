@@ -1,5 +1,6 @@
 // charts/useLineOption.ts
-import type { EChartsOption } from 'echarts'
+import type { EChartsOption, SeriesOption } from 'echarts'
+import type { LineSeries } from '../core/types'
 import type { LineChartProps } from './line-chart'
 import { mergeOption } from '../core/merge-option'
 
@@ -19,9 +20,9 @@ export function useLineOption(props: LineChartProps): EChartsOption {
 
     const isMulti = Array.isArray(data) && typeof data[0] === 'object'
 
-    const series = isMulti
-        ? (data as any[]).map(item => ({
-            type: 'line',
+    const series: SeriesOption[] = isMulti
+        ? (data as LineSeries[]).map(item => ({
+            type: 'line' as const,
             name: item.label,
             data: item.data,
             smooth,
@@ -29,8 +30,8 @@ export function useLineOption(props: LineChartProps): EChartsOption {
         }))
         : [
             {
-                type: 'line',
-                data,
+                type: 'line' as const,
+                data: (data ?? []) as number[],
                 smooth,
                 areaStyle: area ? {} : undefined,
             },
